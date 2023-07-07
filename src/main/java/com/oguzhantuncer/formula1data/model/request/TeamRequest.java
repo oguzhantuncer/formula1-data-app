@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FormulaRequest {
-    private String teamName;
-    private String teamChief;
+public class TeamRequest {
+    private String name;
+    private String chief;
     private String base;
-    private String chasis;
+    private String chassis;
     private String powerUnit;
     private Integer year;
 }
