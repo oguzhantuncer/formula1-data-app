@@ -37,4 +37,9 @@ public class TeamController {
     public Optional<Team> getTeamName(@PathVariable String name){
         return teamService.findByTeamName(name);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+        teamService.delete(id);
+    }
 }

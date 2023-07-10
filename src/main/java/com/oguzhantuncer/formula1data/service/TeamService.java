@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Log4j2
 @Service
 public class TeamService {
 
@@ -45,5 +44,9 @@ public class TeamService {
 
     public Optional<Team> findByTeamName(String teamName) {
         return teamRepository.findByName(teamName);
+    }
+
+    public void delete(Long id) {
+        teamRepository.deleteById(id);
     }
 }
