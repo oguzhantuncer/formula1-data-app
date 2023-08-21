@@ -1,8 +1,12 @@
 import './App.css';
+import './style.scss';
 import { useState, useEffect } from 'react';
-import TeamList from './components/TeamList';
-import TeamItem  from './components/TeamItem';
+
 import service from './service';
+
+import TeamCard from './components/TeamCard';
+import TeamItem  from './components/TeamItem';
+import Navi from './components/Navi';
 
 function App() {
 
@@ -28,12 +32,28 @@ const teamList = teams.map(team =>
     chassis={team.chassis}
     powerUnit={team.powerUnit}
     />
+
+  );
+
+  const teamInfo = teams.map(team =>
+    <TeamCard
+      key={team.id}
+      id={team.id}
+      name={team.name}
+      chief={team.chief}
+      base={team.base}
+      chassis={team.chassis}
+      powerUnit={team.powerUnit}
+    />
+
   );
 
   return (
-    <ul className="list-group">
-            {teamList}
-    </ul>
+    <>
+      <Navi/>
+      {teamList}
+    </>
+    
   );
 }
 

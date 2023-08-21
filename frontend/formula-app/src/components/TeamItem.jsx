@@ -1,23 +1,37 @@
-import { Component } from "react";
 import { ListGroup } from "react-bootstrap";
+import TeamCard from "./TeamCard";
+import '../style.scss';
+import { useState } from "react";
 
-export default class TeamItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: this.props.id,
-            name: this.props.name,
-            chief: this.props.chief,
-            base: this.props.base,
-            chassis: this.props.chassis,
-            powerUnit: this.props.powerUnit,
-        };
-    }
-    render() {
-        return (
-            <ListGroup>
-                <ListGroup.Item action variant="success">{this.state.name}</ListGroup.Item>
-            </ListGroup>
-        );
-    }
+function TeamItem(props) {
+  const [state, setState] = useState({
+    id: props.id,
+    name: props.name,
+    chief: props.chief,
+    base: props.base,
+    chassis: props.chassis,
+    powerUnit: props.powerUnit,
+    className: "hidden"
+  });
+
+  const handleClick = () => {
+    setState(prevState => ({ ...prevState, className: prevState.className === "hidden" ? "" : "hidden" }));
+  };
+
+  return (
+    <ListGroup>
+      <ListGroup.Item onClick={handleClick} action variant="success">{state.name}
+        name : {state.name} <br />
+      </ListGroup.Item>
+        <TeamCard 
+          className={state.className} 
+          name={state.name} 
+          chief={state.chief} 
+          base={state.base} 
+          chassis={state.chassis} 
+          powerUnit={state.powerUnit} />
+    </ListGroup>
+  );
 }
+
+export default TeamItem;
